@@ -23,4 +23,6 @@ const returnUserSchema = userSchema
     password: true,
   });
 
-export { returnUserSchema, userSchema };
+const updateUserSchema = userSchema.partial();
+
+export { returnUserSchema, updateUserSchema, userSchema };

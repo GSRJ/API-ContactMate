@@ -4,7 +4,7 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities";
 import { AppError } from "../errors";
 
-const VerifyUniqueEmail = async (
+const verifyUniqueEmail = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -24,4 +24,4 @@ const VerifyUniqueEmail = async (
   next();
 };
 
-export default VerifyUniqueEmail;
+export default verifyUniqueEmail;
