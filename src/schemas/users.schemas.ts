@@ -11,7 +11,7 @@ const userSchema = z.object({
     .transform((pass) => {
       return hashSync(pass, 10);
     }),
-  admin: z.boolean().optional(),
+  admin: z.boolean().optional().default(false),
 });
 
 const returnUserSchema = userSchema

@@ -25,7 +25,7 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "dev": "ts-node-dev --ignore-watch node_modules --cls --rs src/server.ts",
+    "dev": "ts-node-dev --ignore-watch node_modules --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   }
 }
