@@ -4,7 +4,7 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities";
 import { AppError } from "../errors";
 
-const ensureEmailIsDifferentMiddleware = async (
+const VerifyUniqueEmail = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -24,4 +24,4 @@ const ensureEmailIsDifferentMiddleware = async (
   next();
 };
 
-export default ensureEmailIsDifferentMiddleware;
+export default VerifyUniqueEmail;
