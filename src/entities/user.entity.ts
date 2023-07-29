@@ -15,6 +15,8 @@ class User {
   surname: string;
   @Column({ type: "varchar", length: 45, unique: true })
   email: string;
+  @Column({ type: "integer", unique: true, nullable: true })
+  phone: number;
   @Column({ type: "varchar", length: 120 })
   password: string;
   @Column({ type: "boolean", default: false })
