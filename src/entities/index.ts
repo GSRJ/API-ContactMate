@@ -1,3 +1,4 @@
+import { Contact } from "./contact.entity";
 import { User } from "./user.entity";
 
-export { User };
+export { Contact, User };
