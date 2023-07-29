@@ -4,13 +4,16 @@ const contactSchema = z.object({
   name: z.string().max(45).min(2),
   surname: z.string().max(45).min(2),
   email: z.string().email().max(45).min(3),
-  phone: z.number(),
+  phone: z
+    .string()
+    .max(15)
+    .regex(/^[0-9]+$/)
+    .default("000"),
 });
 
 const returnContactSchema = contactSchema.extend({
   id: z.number(),
   createdAt: z.date(),
-  phone: z.union([z.string(), z.number()]),
 });
 
 const updateContactSchema = contactSchema.partial();

@@ -13,7 +13,6 @@ import verifyUniqueEmail from "../middlewares/verifyuniqueemail.middleware";
 import { updateUserSchema, userSchema } from "../schemas/users.schemas";
 
 const userRoutes: Router = Router();
-const userRoutesAll: Router = Router();
 
 userRoutes.post(
   "",
@@ -45,6 +44,7 @@ userRoutes.get(
   retrieveUserController
 );
 
+const userRoutesAll: Router = Router();
 userRoutesAll.get("", verifyToken, getUsersControllers);
 
 export { userRoutes, userRoutesAll };

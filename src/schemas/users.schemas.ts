@@ -6,7 +6,11 @@ const userSchema = z.object({
   name: z.string().max(45).min(2),
   surname: z.string().max(45).min(2),
   email: z.string().email().max(45).min(3),
-  phone: z.number().default(0o0),
+  phone: z
+    .string()
+    .max(15)
+    .regex(/^[0-9]+$/)
+    .default("000"),
   password: z
     .string()
     .max(30)
@@ -19,7 +23,6 @@ const userSchema = z.object({
 const returnUserSchema = userSchema
   .extend({
     id: z.number(),
-    phone: z.union([z.string(), z.number()]),
     createdAt: z.date(),
     contacts: z.array(returnContactSchema).optional(),
   })

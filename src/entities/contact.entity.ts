@@ -17,8 +17,8 @@ class Contact {
   surname: string;
   @Column({ type: "varchar", length: 45 })
   email: string;
-  @Column({ type: "bigint", nullable: true })
-  phone: number;
+  @Column({ type: "varchar", nullable: true })
+  phone: string;
   @CreateDateColumn()
   createdAt: string;
   @ManyToOne(() => User, (user) => user.contacts)

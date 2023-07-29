@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { TContact, TContactReturn } from "../interfaces/contact.interfaces";
 import createContactService from "../services/contacts/createContact.service";
 import getContactsService from "../services/contacts/getContacts.service";
+import updateContactService from "../services/contacts/updateContact.service";
 
 const createContactController = async (
   req: Request,
@@ -27,4 +28,24 @@ const getContactsController = async (
 
   return res.json(contacts);
 };
-export { createContactController, getContactsController };
+
+const updateContactController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const userId: number = res.locals.id;
+
+  const contactId: number = Number(req.params.id);
+
+  const contactData = req.body;
+
+  const newContact = await updateContactService(contactData, userId, contactId);
+
+  return res.json(newContact);
+};
+
+export {
+  createContactController,
+  getContactsController,
+  updateContactController,
+};
