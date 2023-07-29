@@ -5,6 +5,7 @@ const userSchema = z.object({
   name: z.string().max(45).min(2),
   surname: z.string().max(45).min(2),
   email: z.string().email().max(45).min(3),
+  phone: z.number().default(0o0),
   password: z
     .string()
     .max(30)
@@ -17,6 +18,7 @@ const userSchema = z.object({
 const returnUserSchema = userSchema
   .extend({
     id: z.number(),
+    phone: z.string().nullable(),
     createdAt: z.date(),
   })
   .omit({

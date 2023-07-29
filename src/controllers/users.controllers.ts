@@ -49,7 +49,10 @@ const retrieveUserController = async (req: Request, res: Response) => {
   return res.json(user);
 };
 
-const getUsersControllers = async (req: Request, res: Response) => {
+const getUsersControllers = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
   const isAdmin = res.locals.admin;
 
   const users = await getUsersService(isAdmin);

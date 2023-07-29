@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { Contact } from "./contact.entity";
 
 @Entity("users")
 class User {
@@ -15,7 +17,7 @@ class User {
   surname: string;
   @Column({ type: "varchar", length: 45, unique: true })
   email: string;
-  @Column({ type: "integer", unique: true, nullable: true })
+  @Column({ type: "bigint", nullable: true })
   phone: number;
   @Column({ type: "varchar", length: 120 })
   password: string;
@@ -23,6 +25,9 @@ class User {
   admin: boolean;
   @CreateDateColumn()
   createdAt: string;
+
+  @OneToMany(() => Contact, (contact) => contact.user)
+  contacts: Contact[];
 }
 
 export { User };

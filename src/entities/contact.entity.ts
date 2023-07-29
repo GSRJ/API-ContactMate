@@ -17,11 +17,11 @@ class Contact {
   surname: string;
   @Column({ type: "varchar", length: 45 })
   email: string;
-  @Column({ type: "integer" })
+  @Column({ type: "bigint", nullable: true })
   phone: number;
   @CreateDateColumn()
   createdAt: string;
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, (user) => user.contacts)
   user: User;
 }
 
