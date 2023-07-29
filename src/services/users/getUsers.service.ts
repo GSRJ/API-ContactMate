@@ -11,7 +11,11 @@ const getUsersService = async (isAdmin: boolean): Promise<TUserAllReturn> => {
   }
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const findUsers = await userRepository.find();
+  const findUsers = await userRepository.find({
+    relations: {
+      contacts: true,
+    },
+  });
 
   const users = returnAllUsersSchema.parse(findUsers);
 

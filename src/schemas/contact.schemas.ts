@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { returnUserSchema } from "./users.schemas";
 
 const contactSchema = z.object({
   name: z.string().max(45).min(2),
@@ -11,7 +10,7 @@ const contactSchema = z.object({
 const returnContactSchema = contactSchema.extend({
   id: z.number(),
   createdAt: z.date(),
-  user: returnUserSchema,
+  phone: z.union([z.string(), z.number()]),
 });
 
 const updateContactSchema = contactSchema.partial();

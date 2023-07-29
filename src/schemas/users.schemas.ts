@@ -1,5 +1,6 @@
 import { hashSync } from "bcryptjs";
 import { z } from "zod";
+import { returnContactSchema } from "./contact.schemas";
 
 const userSchema = z.object({
   name: z.string().max(45).min(2),
@@ -18,8 +19,9 @@ const userSchema = z.object({
 const returnUserSchema = userSchema
   .extend({
     id: z.number(),
-    phone: z.string().nullable(),
+    phone: z.union([z.string(), z.number()]),
     createdAt: z.date(),
+    contacts: z.array(returnContactSchema).optional(),
   })
   .omit({
     password: true,

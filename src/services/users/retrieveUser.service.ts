@@ -10,9 +10,11 @@ const retrieveUserService = async (idUser: number): Promise<TUserReturn> => {
     where: {
       id: idUser,
     },
+    relations: {
+      contacts: true,
+    },
   });
 
   return returnUserSchema.parse(findUser);
 };
-
 export default retrieveUserService;
