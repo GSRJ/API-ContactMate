@@ -25,4 +25,6 @@ const returnUserSchema = userSchema
 
 const updateUserSchema = userSchema.partial();
 
-export { returnUserSchema, updateUserSchema, userSchema };
+const returnAllUsersSchema = z.array(returnUserSchema);
+
+export { returnAllUsersSchema, returnUserSchema, updateUserSchema, userSchema };

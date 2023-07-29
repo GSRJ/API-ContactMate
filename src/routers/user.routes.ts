@@ -2,6 +2,8 @@ import { Router } from "express";
 import {
   createUserController,
   deleteUserController,
+  getUsersControllers,
+  retrieveUserController,
   updateUserController,
 } from "../controllers/users.controllers";
 import verifyId from "../middlewares/verifyId.middleware";
@@ -11,6 +13,7 @@ import verifyUniqueEmail from "../middlewares/verifyuniqueemail.middleware";
 import { updateUserSchema, userSchema } from "../schemas/users.schemas";
 
 const userRoutes: Router = Router();
+const userRoutesAll: Router = Router();
 
 userRoutes.post(
   "",
@@ -34,4 +37,14 @@ userRoutes.delete(
   deleteUserController
 );
 
-export default userRoutes;
+userRoutes.get(
+  "",
+  verifyToken,
+  verifyData(updateUserSchema),
+  verifyId,
+  retrieveUserController
+);
+
+userRoutesAll.get("", verifyToken, getUsersControllers);
+
+export { userRoutes, userRoutesAll };
