@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createContactController,
+  deleteContactController,
   getContactsController,
   updateContactController,
 } from "../controllers/contact.controller";
@@ -22,6 +23,7 @@ contactRoutes.patch(
   verifyData(updateContactSchema),
   updateContactController
 );
+contactRoutes.delete("/:id", verifyToken, deleteContactController);
 
 const contactRoutesAll: Router = Router();
 contactRoutesAll.get("", verifyToken, getContactsController);

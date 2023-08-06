@@ -16,7 +16,7 @@ const getUsersService = async (isAdmin: boolean): Promise<TUserAllReturn> => {
       contacts: true,
     },
   });
-
+  console.log(findUsers);
   const users = returnAllUsersSchema.parse(findUsers);
 
   return users;

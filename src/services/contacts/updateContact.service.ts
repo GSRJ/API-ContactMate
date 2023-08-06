@@ -23,7 +23,6 @@ const updateContactService = async (
     .andWhere("user.id = :userId", { userId })
     .getOne();
 
-  console.log(oldContactData);
   if (!oldContactData) {
     throw new AppError("contact not found", 404);
   }
